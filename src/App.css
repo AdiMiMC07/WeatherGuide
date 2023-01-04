@@ -1,38 +1,44 @@
-.App {
-  text-align: center;
+:root{
+  --backgroundGradOne : radial-gradient(circle at calc(100% - 1rem) calc(100% - 1rem),rgb(0, 87, 128),rgb(0, 7, 100));
+  --backgroundGradTwo : radial-gradient(circle at calc(100% - 1rem) 1rem,lightgreen,green,darkgreen);
+  --backgroundGradThree : radial-gradient(circle at 10rem calc(100% - 1rem),rgb(238, 208, 144),rgb(168, 90, 1),rgb(171, 63, 23));
+  --backgroundGradFour : radial-gradient(circle at 10rem calc(100% - 1rem),rgb(124, 80, 236),rgb(34, 13, 170));
+  --backgroundGradFive : radial-gradient(circle at 10rem calc(100% - 1rem),rgb(20, 193, 209),rgb(16, 118, 152));
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.default-image-nobs{
+  width: 100%;
+  height: 50vh;
+  background-image: radial-gradient(circle at 90%,blue 15%,darkblue);
+  border-radius: 1rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#card-w{
+  background-image: var(--backgroundGradTwo);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+#card-uv{
+  background-image: var(--backgroundGradThree);
+  color: white;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#card-h{
+  background-image: var(--backgroundGradOne);
+  color: white;
+}
+#card-vb{
+  background-image: var(--backgroundGradFour);
+  color: white;
+}
+#card-d{
+  background-image: var(--backgroundGradFive);
+  color: white;
+}
+.fa-droplet-degree::before{
+  content: "\f748";
+  position: relative;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
 }

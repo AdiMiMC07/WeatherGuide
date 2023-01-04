@@ -1,39 +1,36 @@
-import React,{useState,useEffect} from 'react'
-import image from './cloudy.jpg'
-export default function Main(props) {
-  const apikey = process.env.REACT_APP_WEATHER_API_KEY;
-  const [weather, setWeather] = useState({});
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': `${apikey}`,
-      'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
-    }
-  };
-  const updateWeather = async () => {
-    let weatherData = await fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Lucknow', options);
-    let parsedData = await weatherData.json();
-    console.log(parsedData)
-    setWeather(parsedData);
+import React, { useState, useContext} from 'react'
+import locationContext from '../context/locationSetter/locContext';
+import Forecast from './Forecast';
+import Search from './Search';
+import WeatherItem from './WeatherItem';
+
+export default function Main() {
+  const context = useContext(locationContext);
+  const { locID,getLocID } = context;
+  const [location, setLocation] = useState("");
+  const onChange = (e)=>{
+    setLocation(e.target.value);
   }
-  useEffect(() => {
-    updateWeather();
-    // eslint-disable-next-line
-  },[])
+  const handleSubmitClick = ()=>{
+    if (location){
+      getLocID(location);
+    }
+    else{
+      console.log("entry do bhai");
+    }
+  }
   return (
     <>
-      <div className='container'>
-        <div className="card text-bg-dark">
-          <img src={image} className="card-img" alt="..." style={{height: "30rem"}}/>
-            <div className="card-img-overlay">
-              <h5 className="card-title fs-1">{props.city}</h5>
-              <p className="card-text fs-2">{weather.temp} C</p>
-              <p className="card-text fs-5">Feels Like : {weather.feels_like} C</p>
-              <p className="card-text fs-5">Max / Min : {weather.max_temp} C / {weather.min_temp} C</p>
-            </div>
-        </div>
-        {/* <button onClick={updateWeather}>Click it</button> */}
+    <div className="container vw-100">
+      <h2 className='text-center my-3'>Welcome to WeatherGuide
+      </h2>
+      <h4 className='text-center my-2'>Get current weather data of your city</h4>
+      <Search onChange={onChange} handleSubmitClick={handleSubmitClick}/>
+      <div>
+        {<WeatherItem location={location} id={locID}/>}
+        <Forecast/>
       </div>
+    </div>
     </>
   )
 }
