@@ -21,34 +21,34 @@ current:
 
 Forecast data :
 
-    date:"2023-01-04"
+    date:"2023-01-04" /
     symbol:"d210"
-    symbolPhrase:"light rain"
-    maxTemp:14
-    minTemp:10
-    maxFeelsLikeTemp:14
-    minFeelsLikeTemp:11
-    maxRelHumidity:98
-    minRelHumidity:65
+    symbolPhrase:"light rain" /
+    maxTemp:14 /
+    minTemp:10 /
+    maxFeelsLikeTemp:14 /
+    minFeelsLikeTemp:11 /
+    maxRelHumidity:98 /
+    minRelHumidity:65 /
     maxDewPoint:11
     minDewPoint:9
     precipAccum:0.75
     snowAccum:0
-    maxWindSpeed:9
-    windDir:251
-    maxWindGust:17
-    precipProb:57
-    cloudiness:68
-    sunrise:"08:05:53"
-    sunset:"16:05:24"
+    maxWindSpeed:9 /
+    windDir:251 /
+    maxWindGust:17 /
+    precipProb:57 /
+    cloudiness:68 /
+    sunrise:"08:05:53" /
+    sunset:"16:05:24" /
     sunriseEpoch:1672819553
     sunsetEpoch:1672848324
-    moonrise:"13:41:19"
-    moonset:"06:18:30"
+    moonrise:"13:41:19" /
+    moonset:"06:18:30" /
     moonPhase:153
-    uvIndex:0
+    uvIndex:0 /
     minVisibility:7238
-    pressure:1014.22
+    pressure:1014.22 /
     confidence:"g"
     solarRadiationSum:782
 

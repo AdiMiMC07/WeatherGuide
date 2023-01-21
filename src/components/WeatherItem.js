@@ -3,7 +3,7 @@ import locationContext from '../context/locationSetter/locContext'
 
 const WeatherItem = (props) => {
     const weatherContext = useContext(locationContext)
-    const { locID, weather, updateWeather } = weatherContext;
+    const { locID, weather, updateWeather,weatherIcon } = weatherContext;
     useEffect(() => {
         if (locID) {
             updateWeather(locID);
@@ -16,18 +16,21 @@ const WeatherItem = (props) => {
     }
     return (
         <>
-            {(Object.keys(weather)).length !== 0 && props.location !== "" ? <div className="container vw-100">
+            {(Object.keys(weather)).length !== 0 ? <div className="container vw-100">
                 <div className="card text-bg-dark default-image-nobs">
                     <div className="card-img-overlay ms-3">
-                        <h5 className="card-title fs-1">{capitaliseFirst(props.location) === "" ? "" : capitaliseFirst(props.location)}</h5>
+                        <div className="d-flex">
+                            <h5 className="card-title fs-1 me-2">{localStorage.getItem('location') === "" ? "" : capitaliseFirst(localStorage.getItem('location'))}</h5>
+                            <div className='display-weather-icon'>{weatherIcon[weather.symbol.toString()]}</div>
+                        </div>
                         <p className="card-text fs-2">{weather.symbolPhrase ? weather.symbolPhrase : ""}</p>
                         <p className="card-text fs-3">{weather.temperature ? weather.temperature : ""}˚C</p>
                         <p className="card-text fs-5">Feels Like : {weather.feelsLikeTemp ? weather.feelsLikeTemp : ""}˚C</p>
                         <p className="card-text fs-5">Cloudiness : {weather.cloudiness ? weather.cloudiness + "%" : "no clouds"}</p>
                     </div>
                 </div>
-                <div className="card-group my-3 gap-1">
-                    <div className="card shadow rounded" id="card-d">
+                <div className="d-flex my-3 gap-1 flex-wrap">
+                    <div className="card shadow rounded flex-fill" id="card-d">
                         <div className="card-body">
                             <div className="d-flex align-items-center">
                                 <h5 className="card-title fs-3 me-3">DewPoint</h5>
@@ -39,7 +42,7 @@ const WeatherItem = (props) => {
 
                         </div>
                     </div>
-                    <div className="card shadow rounded" id="card-h">
+                    <div className="card shadow rounded flex-fill" id="card-h">
                         <div className="card-body">
                             <div className="d-flex align-items-center">
                                 <h5 className="card-title fs-3 me-3">Humidity</h5>
@@ -51,7 +54,7 @@ const WeatherItem = (props) => {
 
                         </div>
                     </div>
-                    <div className="card shadow rounded" id="card-vb">
+                    <div className="card shadow rounded flex-fill" id="card-vb">
                         <div className="card-body">
                             <div className="d-flex align-items-center">
 
@@ -61,7 +64,7 @@ const WeatherItem = (props) => {
                             <p className="card-text">{weather.visibility ? weather.visibility : "0"} metres</p>
                         </div>
                     </div>
-                    <div className="card shadow rounded" id="card-uv">
+                    <div className="card shadow rounded flex-fill" id="card-uv">
                         <div className="card-body">
                             <div className="d-flex align-items-center">
 
@@ -71,7 +74,7 @@ const WeatherItem = (props) => {
                             <p className="card-text">{weather.uvIndex ? weather.uvIndex : "0"}</p>
                         </div>
                     </div>
-                    <div className="card shadow rounded" id="card-w">
+                    <div className="card shadow rounded flex-fill" id="card-w">
                         <div className="card-body">
                             <div className="d-flex align-items-center">
 
@@ -85,7 +88,7 @@ const WeatherItem = (props) => {
                 </div>
                 <div className="row mb-3">
                     <div className="col-sm-6 mb-3 mb-sm-0">
-                        <div className="card">
+                        <div className="card shadow">
                             <div className="card-body">
                                 <h5 className="card-title fs-3 me-3">Pressure</h5>
                                 <p className="card-text">{weather.pressure ? weather.pressure : "0"} hPa</p>
@@ -93,7 +96,7 @@ const WeatherItem = (props) => {
                         </div>
                     </div>
                     <div className="col-sm-6">
-                        <div className="card">
+                        <div className="card shadow">
                             <div className="card-body">
                                 <h5 className="card-title fs-3 me-3">Precipitation</h5>
                                 <p className="card-text">{weather.preciProb ? weather.preciProb : "0"} %</p>

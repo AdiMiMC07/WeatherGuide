@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import locationContext from '../context/locationSetter/locContext'
 
 const Forecast = () => {
@@ -12,16 +13,18 @@ const Forecast = () => {
     }, [locID])
     return (
         <>
-            <div>Forecast</div>
             {dailyForecast.length !== 0 ? <div className='container'>
-                <div className="row row-cols-1 row-cols-md-3 g-4">
-                    {dailyForecast.map(day =>{
-                        return <div className="col">
-                        <div className="card h-100">
-                            <img src="..." className="card-img-top" alt="..." />
+                <div className="row row-cols-1 row-cols-md-3 g-4 mb-2">
+                    {dailyForecast.map((day,index) =>{
+                        return <div className="col" key={index}>
+                        <div className="card h-100" style={{backgroundImage:"linear-gradient(135deg,white 65%,#008effd6 40%)",backgroundPosition:"20% 80%"}}>
                             <div className="card-body">
                                 <h5 className="card-title">{(new Date(day.date)).toDateString()}</h5>
-                                <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p className="card-text">{day.symbolPhrase}</p>
+                                <p className="card-text">Cloudiness :{day.cloudiness} %</p>
+                                <p className="card-text">Min/Max Temp : {day.minTemp} / {day.maxTemp} ˚C</p>
+                                <p className="card-text">Min/Max Humidity : {day.minRelHumidity} / {day.maxRelHumidity} %</p>
+                                <Link className="btn btn-primary" to={`/forecastitem/${index}`}>View Complete Forecast</Link>
                             </div>
                         </div>
                     </div>
